@@ -22,7 +22,7 @@
     {% for post in posts %}
     <div class = "col-md-3">
         <div class = "post">
-            <img src="{{ post.image.url }}" width = "100%">
+            <img src="{{ post.image.url }}" width = "200px" height = "300px">
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <div class = "date">
                 {{ post.end_date }}
