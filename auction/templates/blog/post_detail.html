@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+        <div class = "postdt">
+            <div class = "col-md-6">
+                <img src="{{ post.image.url }}" width = "90%">
+            </div>
+            <div class = "col-md-6">
+                <h1>{{ post.title }}</h1>
+                <hr align="left" style="border: solid 1px #808080; width: 80%;">
+                <h3>작성자 : {{ post.author }}</h3>
+                <hr align="left" style="border: solid 1px #808080; width: 80%;">
+                <h3>분류 : {{ post.category }}</h3>
+                <hr align="left" style="border: solid 1px #808080; width: 80%;">
+                <h3>시작 입찰가 : {{ post.start_price }} 원</h3>
+                <hr align="left" style="border: solid 1px #808080; width: 80%;">
+                <h3 style="display:inline" >현재 입찰가 : {{ post.now_price }} 원</h3>
+                <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+                    <span>입찰하기</span>
+                </a>
+                <hr align="left" style="border: solid 1px #808080; width: 80%;">
+                <h3>입찰자 : {{ post.buyer }}</h3>
+                <hr align="left" style="border: solid 1px #808080; width: 80%;">
+                <h3>마감일 : {{ post.end_date }}</h3>
+            </div>
+        </div>
+
+        <div class = "col-md-12">
+            <h2>상품 설명</h2>
+            <hr align="left" style="border: solid 1px #808080; width: 90%;">
+            <h3>{{ post.description|linebreaksbr}}</h3>
+        </div>
+{% endblock %}

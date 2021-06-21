@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class = "category">
+        <table style = "width : 50%; height:200; text-align:center; font-weight:bold; font-family:Georgia, 'Times New Roman', Times, serif; font-size:26px; line-height:50px;" align = "center">
+            <tr align ="center">
+                <td><a href="{% url 'category_list' pk='의류' %}">의류</a></td>
+                <td><a href="{% url 'category_list' pk='잡화' %}">잡화</a></td>
+                <td><a href="{% url 'category_list' pk='가구' %}">가구</a></td>
+                <td><a href="{% url 'category_list' pk='가전' %}">가전</a></td>
+            </tr>
+
+            <tr align ="center">
+                <td><a href="{% url 'category_list' pk='도서' %}">도서</a></td>
+                <td><a href="{% url 'category_list' pk='취미' %}">취미</a></td>
+                <td><a href="{% url 'category_list' pk='유아' %}">유아</a></td>
+                <td><a href="{% url 'category_list' pk='IT' %}">IT</a></td>
+            </tr>
+
+        </table>
+    </div>
+    {% for post in posts %}
+    <div class = "col-md-3">
+        <div class = "post">
+            <img src="{{ post.image.url }}" width = "100%">
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <div class = "date">
+                {{ post.end_date }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
