@@ -19,11 +19,12 @@ def category_list(request, pk) :
 
 def post_new(request) :
     if request.method =="POST" :
-        form = NewPostForm(request.POST)
+        form = NewPostForm(request.POST, request.FILES)
         if form.is_valid() :
             post = form.save(commit=False)
+            print(post)
             post.save()
-            return redirect('post_new', pk=post.pk)
+            return redirect('post_detail', pk=post.pk)
     else :
         form = NewPostForm()
     return render(request, 'blog/post_new.html', {'form' : form})
